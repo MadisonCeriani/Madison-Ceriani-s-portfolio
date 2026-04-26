@@ -2,27 +2,31 @@
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 
-navToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('open');
-});
-
-// Close mobile menu when a link is clicked
-document.querySelectorAll('.nav-link').forEach((link) => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
   });
-});
+
+  // Close mobile menu when a link is clicked
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+    });
+  });
+}
 
 // Add scrolled class to navbar on scroll
 const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+}
 
 // Highlight active nav link based on scroll position
 const sections = document.querySelectorAll('section[id]');
@@ -52,9 +56,11 @@ window.addEventListener('scroll', highlightNavOnScroll);
 // Contact form submission handler
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  alert(`Thanks, ${name}! Your message has been received.`);
-  contactForm.reset();
-});
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    alert(`Thanks, ${name}! Your message has been received.`);
+    contactForm.reset();
+  });
+}
